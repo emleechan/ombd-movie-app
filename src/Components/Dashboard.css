@@ -1,0 +1,11 @@
+.dashboard{
+    margin: 60px;
+}
+
+.title{
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
+.title-numbers{ 
+    font-size: x-large;
+}
