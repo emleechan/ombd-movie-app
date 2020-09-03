@@ -1,12 +1,12 @@
 import React, {useState, useEffect, useLayoutEffect} from 'react';
-import './Dashboard.css';
 import Movie from "../Movie/Movie";
 import Searchbar from "../Searchbar/Searchbar";
-import Nomination from "../Nomination";
-import { Grid, Segment, Message } from 'semantic-ui-react'
+import Nomination from "../Nomination/Nomination";
+import { Grid, Segment, Message, Divider } from 'semantic-ui-react'
+import './Dashboard.css';
+import './../Nomination/Nomination.css';
 
 const Dashboard = () => {
-    
     const [loading, setLoading] = useState(false);
     const [movies, setMovies] = useState([]);
     const [nominations, setNomination] = useState(
@@ -20,7 +20,6 @@ const Dashboard = () => {
         fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=6e6fccd5`)
         .then(response => response.json())
         .then(jsonResponse => {
-            console.log(jsonResponse)
             if (jsonResponse.Response === "True") {
                 setLoading(false);
                 setMovies(jsonResponse.Search);
@@ -38,7 +37,6 @@ const Dashboard = () => {
     const nominate = (movie) => {
         const newNomination = [...nominations, movie];
         setNomination(newNomination);
-        console.log(newNomination)
         localStorage.setItem("localStorage", JSON.stringify(newNomination));
     };
 
@@ -50,43 +48,39 @@ const Dashboard = () => {
 
     return (
         <div className="App">
-            <Grid centered columns={1}>
-                <Grid.Column>
-                    <Searchbar search={search} loading={loading}/>   
-                </Grid.Column>
-                { nominations.length >=5 &&
-                    <Grid.Column>
-                        <Message
-                            info
-                            header='5 nominations have been made!'
-                            content="Congrats"
-                        />
-                    </Grid.Column>
-                }
+            <Grid centered columns={2} stackable >
                 <Grid.Row>
-                    <Grid.Column width={10}>
-                            <div>
-                                {errorMessage ? (
-                                    <div className="errorMessage">{errorMessage}</div>
-                                ) : (
-                                    movies.map((movie, index) => (
-                                        <Movie key={`${index}-${movie.Title}`} movie={movie} nominate={nominate} nominations={nominations} />
-                                    ))
-                                )}
-                            </div>
-                    </Grid.Column>
-                    <Grid.Column width={6}>
-                        <Segment>
+                    <Grid.Column className="nomination-container" id="fonts" width={4} height={10}>
                             {nominations.length <= 0 ? (
-                                <div>There are no nominations</div>
+                                <div className="nomination">Search movies to add nominations</div>
                             ) : (
                                 nominations.map((movie, index) => (
                                     <Nomination key={`${index}-${movie.Title}`} movie={movie} deleteNomination={deleteNomination}/>
                                 ))
                             )}
-                        </Segment> 
+                    </Grid.Column>
+
+                    <Grid.Column width={12}> 
+                        <Searchbar search={search} loading={loading}/>
+                        { nominations.length >=5 &&
+                            <Message
+                                info
+                                header='5 nominations have been made'
+                                content="Roll out the red carpet!"
+                            />
+                        }   
+                        <div>
+                            {errorMessage ? (
+                                <div className="errorMessage"><h1 id='fonts'>{errorMessage}</h1></div>
+                            ) : (
+                                movies.map((movie, index) => (
+                                    <Movie key={`${index}-${movie.Title}`} movie={movie} nominate={nominate} nominations={nominations} />
+                                ))
+                            )}
+                        </div>
                     </Grid.Column>
                 </Grid.Row>
+
             </Grid>
         </div>
     );

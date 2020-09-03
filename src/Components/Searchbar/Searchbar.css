@@ -1,5 +1,6 @@
 .search{
     display: flex !important;
     justify-content: center;
-    margin: 30px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }

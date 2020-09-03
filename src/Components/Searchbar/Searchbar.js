@@ -19,10 +19,9 @@ const Searchbar = ({loading, search}) => {
     resetInputField();
   }
 
-  const handleEnter = e => {
+  const handleEnter = (e) => {
     if (e.keyCode === 13) {
       setSearchValue(e.target.value);
-      console.log("onKeyDown", e.type, e.keyCode)
       callSearchFunction(e);
     }
   };
@@ -37,12 +36,7 @@ const Searchbar = ({loading, search}) => {
           loading={loading}
           placeholder='Search Movies...'
           onKeyDown={handleEnter}
-          action={
-            !loading && 
-            <Button icon onClick={callSearchFunction} type="submit" value="SEARCH" >
-              <Icon name='search' />
-           </Button>
-         }
+          icon='search'
         />
     );
 }

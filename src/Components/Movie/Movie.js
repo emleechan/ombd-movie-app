@@ -10,17 +10,20 @@ const Movie = ({ movie, nominate, nominations }) => {
 
   return (
     <Segment className="movie">
-        <h2>{movie.Title}</h2>
-        <p>({movie.Year})</p>
+      <div>
         <img
-           width="200"
-            alt={`The movie titled: ${movie.Title}`}
+            width="100"
             src={movie.Poster}
         />
-        {  !nominations.find(nomination => nomination.imdbID === movie.imdbID) && nominations.length < 5 ?
+      </div>
+      <div className='movie-body'> 
+        <h2>{movie.Title}</h2>
+        <p>({movie.Year})</p>
+        {!nominations.find(nomination => nomination.imdbID === movie.imdbID) && nominations.length < 5 ?
             <Button onClick={nominateMovie} >Nominate</Button> :
             <Button disabled>Nominate</Button> 
         }
+      </div>
     </Segment>
   );
 };
