@@ -3,7 +3,7 @@ import './Dashboard.css';
 import Movie from "./Movie";
 import Searchbar from "./Searchbar";
 import Nomination from "./Nomination";
-import { Grid, Segment } from 'semantic-ui-react'
+import { Grid, Segment, Message } from 'semantic-ui-react'
 
 const Dashboard = () => {
     const [loading, setLoading] = useState(true);
@@ -38,6 +38,15 @@ const Dashboard = () => {
                 <Grid.Column>
                     <Searchbar search={search} />   
                 </Grid.Column>
+                { nominations.length >=5 &&
+                    <Grid.Column>
+                        <Message
+                            info
+                            header='5 nominations have been made!'
+                            content="Congrats"
+                        />
+                    </Grid.Column>
+                }
                 <Grid.Row>
                     <Grid.Column width={10}>
                             <div>
