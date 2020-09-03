@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Input, Button, Icon } from 'semantic-ui-react'
-
+import './Searchbar.css';
 
 const Searchbar = (props) => {
   const [searchValue, setSearchValue] = useState("");
@@ -20,16 +20,19 @@ const Searchbar = (props) => {
   }
 
   return (
-      <form className="search">
         <Input
+          className='search'
           value={searchValue}
           onChange={handleSearchInputChanges}
+          size='huge' 
           type="text"
+          placeholder='Search Movies...'
+          action={
+            <Button icon onClick={callSearchFunction} type="submit" value="SEARCH" >
+              <Icon name='search' />
+           </Button>
+        }
         />
-        <Button icon onClick={callSearchFunction} type="submit" value="SEARCH" >
-          <Icon name='search' />
-        </Button>
-      </form>
     );
 }
 
