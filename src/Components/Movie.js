@@ -2,9 +2,7 @@ import React from "react";
 import { Segment, Button } from 'semantic-ui-react';
 import './Movie.css';
 
-const Movie = (props) => {
-  const { movie, nominate, nominations } = props;
-
+const Movie = ({ movie, nominate, nominations }) => {
   const nominateMovie = (e) => {
     e.preventDefault();
     nominate(movie);

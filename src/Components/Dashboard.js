@@ -3,8 +3,7 @@ import './Dashboard.css';
 import Movie from "./Movie";
 import Searchbar from "./Searchbar";
 import Nomination from "./Nomination";
-import { Grid, Segment, Image } from 'semantic-ui-react'
-
+import { Grid, Segment } from 'semantic-ui-react'
 
 const Dashboard = () => {
     const [loading, setLoading] = useState(true);
@@ -27,6 +26,10 @@ const Dashboard = () => {
 
     const nominate = (movie) => {
         setNomination([...nominations, movie])
+    };
+
+    const deleteNomination = (imdbID) => {
+        setNomination(nominations.filter(movie => movie.imdbID !== imdbID))
     };
 
     return (
@@ -53,7 +56,7 @@ const Dashboard = () => {
                                 <div>There are no nominations</div>
                             ) : (
                                 nominations.map((movie, index) => (
-                                    <Nomination key={`${index}-${movie.Title}`} movie={movie} />
+                                    <Nomination key={`${index}-${movie.Title}`} movie={movie} deleteNomination={deleteNomination}/>
                                 ))
                             )}
                         </Segment> 
