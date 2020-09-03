@@ -6,19 +6,22 @@ import Nomination from "./Nomination";
 import { Grid, Segment, Message } from 'semantic-ui-react'
 
 const Dashboard = () => {
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [movies, setMovies] = useState([]);
     const [nominations, setNomination] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
     
     const search = (searchValue) => {
+        setLoading(true);
         setErrorMessage(null);
         fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=6e6fccd5`)
         .then(response => response.json())
         .then(jsonResponse => {
             if (jsonResponse.Response === "True") {
+                setLoading(false);
                 setMovies(jsonResponse.Search);
             } else {
+                setLoading(false);
                 setErrorMessage(jsonResponse.Error);
             }
         });
@@ -36,7 +39,7 @@ const Dashboard = () => {
         <div className="App">
             <Grid centered columns={1}>
                 <Grid.Column>
-                    <Searchbar search={search} />   
+                    <Searchbar search={search} loading={loading}/>   
                 </Grid.Column>
                 { nominations.length >=5 &&
                     <Grid.Column>
