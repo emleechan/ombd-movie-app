@@ -6,9 +6,12 @@ import Nomination from "./Nomination";
 import { Grid, Segment, Message } from 'semantic-ui-react'
 
 const Dashboard = () => {
+    
     const [loading, setLoading] = useState(false);
     const [movies, setMovies] = useState([]);
-    const [nominations, setNomination] = useState([]);
+    const [nominations, setNomination] = useState(
+        JSON.parse(localStorage.getItem("localStorage")) || []
+    );
     const [errorMessage, setErrorMessage] = useState(null);
     
     const search = (searchValue) => {
@@ -28,11 +31,16 @@ const Dashboard = () => {
     };
 
     const nominate = (movie) => {
-        setNomination([...nominations, movie])
+        const newNomination = [...nominations, movie];
+        setNomination(newNomination);
+        console.log(newNomination)
+        localStorage.setItem("localStorage", JSON.stringify(newNomination));
     };
 
     const deleteNomination = (imdbID) => {
-        setNomination(nominations.filter(movie => movie.imdbID !== imdbID))
+        const newNomination = nominations.filter(movie => movie.imdbID !== imdbID);
+        setNomination(newNomination);
+        localStorage.setItem("localStorage", JSON.stringify(newNomination));
     };
 
     return (
