@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useLayoutEffect} from 'react';
 import './Dashboard.css';
-import Movie from "./Movie";
-import Searchbar from "./Searchbar";
-import Nomination from "./Nomination";
+import Movie from "../Movie/Movie";
+import Searchbar from "../Searchbar/Searchbar";
+import Nomination from "../Nomination";
 import { Grid, Segment, Message } from 'semantic-ui-react'
 
 const Dashboard = () => {
@@ -20,6 +20,7 @@ const Dashboard = () => {
         fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=6e6fccd5`)
         .then(response => response.json())
         .then(jsonResponse => {
+            console.log(jsonResponse)
             if (jsonResponse.Response === "True") {
                 setLoading(false);
                 setMovies(jsonResponse.Search);
@@ -27,6 +28,10 @@ const Dashboard = () => {
                 setLoading(false);
                 setErrorMessage(jsonResponse.Error);
             }
+        })
+        .catch((error) => {
+            setLoading(false);
+            setErrorMessage(error.toString());
         });
     };
 
