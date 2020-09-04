@@ -1,10 +1,10 @@
 import React, {useState, useEffect, useLayoutEffect} from 'react';
-import Movie from "../Movie/Movie";
-import Searchbar from "../Searchbar/Searchbar";
-import Nomination from "../Nomination/Nomination";
-import { Grid, Segment, Message, Divider } from 'semantic-ui-react'
+import Movie from "../../Components/Movie/Movie";
+import Searchbar from "../../Components/Searchbar/Searchbar";
+import Nomination from "../../Components/Nomination/Nomination";
+import { Grid, Segment, Message } from 'semantic-ui-react'
 import './Dashboard.css';
-import './../Nomination/Nomination.css';
+import '../../Components/Nomination/Nomination.css';
 
 const Dashboard = () => {
     const [loading, setLoading] = useState(false);
@@ -12,11 +12,10 @@ const Dashboard = () => {
     const [nominations, setNomination] = useState(
         JSON.parse(localStorage.getItem("localStorage")) || []
     );
-    const [errorMessage, setErrorMessage] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
     
     const search = (searchValue) => {
         setLoading(true);
-        setErrorMessage(null);
         fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=6e6fccd5`)
         .then(response => response.json())
         .then(jsonResponse => {

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Input, Button, Icon } from 'semantic-ui-react'
 import './Searchbar.css';
 
+const ENTER_KEYCODE = 13;
+
 const Searchbar = ({loading, search}) => {
   const [searchValue, setSearchValue] = useState("");
   
@@ -20,7 +22,8 @@ const Searchbar = ({loading, search}) => {
   }
 
   const handleEnter = (e) => {
-    if (e.keyCode === 13) {
+    //constant 13 instead
+    if (e.keyCode === ENTER_KEYCODE) {
       setSearchValue(e.target.value);
       callSearchFunction(e);
     }
