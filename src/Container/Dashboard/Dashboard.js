@@ -3,6 +3,7 @@ import Movie from "../../Components/Movie/Movie";
 import Searchbar from "../../Components/Searchbar/Searchbar";
 import Nomination from "../../Components/Nomination/Nomination";
 import { Grid, Segment, Message } from 'semantic-ui-react'
+import {MAX_NOMINATIONS} from '../../Constants'
 import './Dashboard.css';
 import '../../Components/Nomination/Nomination.css';
 
@@ -22,6 +23,7 @@ const Dashboard = () => {
             if (jsonResponse.Response === "True") {
                 setLoading(false);
                 setMovies(jsonResponse.Search);
+                setErrorMessage('');
             } else {
                 setLoading(false);
                 setErrorMessage(jsonResponse.Error);
@@ -51,7 +53,7 @@ const Dashboard = () => {
                 <Grid.Row>
                     <Grid.Column className="nomination-container" id="fonts" width={4} height={10}>
                             {nominations.length <= 0 ? (
-                                <div className="nomination">Search movies to add nominations</div>
+                                <div className="nomination">No Movies Are Nominated</div>
                             ) : (
                                 nominations.map((movie, index) => (
                                     <Nomination key={`${index}-${movie.Title}`} movie={movie} deleteNomination={deleteNomination}/>
@@ -61,10 +63,10 @@ const Dashboard = () => {
 
                     <Grid.Column width={12}> 
                         <Searchbar search={search} loading={loading}/>
-                        { nominations.length >=5 &&
+                        {nominations.length >= MAX_NOMINATIONS &&
                             <Message
                                 info
-                                header='5 nominations have been made'
+                                header='Max nominations have been made'
                                 content="Roll out the red carpet!"
                             />
                         }   

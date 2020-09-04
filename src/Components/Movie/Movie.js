@@ -1,8 +1,7 @@
 import React from "react";
 import { Segment, Button } from 'semantic-ui-react';
 import './Movie.css';
-
-const MAX_NOMINATIONS = 5
+import {MAX_NOMINATIONS} from '../../Constants'
 
 const Movie = ({ movie, nominate, nominations }) => {
   const nominateMovie = (e) => {
