@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import Movie from "../../Components/Movie/Movie";
 import Searchbar from "../../Components/Searchbar/Searchbar";
 import Nomination from "../../Components/Nomination/Nomination";
@@ -9,35 +9,8 @@ import './Dashboard.css';
 import '../../Components/Nomination/Nomination.css';
 
 const Dashboard = () => {
-    // const [movies, setMovies] = useState([]);
-    // const [nominations, setNomination] = useState(
-    //     JSON.parse(localStorage.getItem("localStorage")) || []
-    // );
-    // const [errorMessage, setErrorMessage] = useState('');
     const [state, setState] = useContext(AppContext);
-
     const { movies, loading, nominations, errorMessage } = state;
-
-    const search = (searchValue) => {
-        setState(state => ({ ...state, loading: true }));
-
-        fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=6e6fccd5`)
-        .then(response => response.json())
-        .then(jsonResponse => {
-            if (jsonResponse.Response === "True") {
-                setState(state => ({ ...state, loading: false }));
-                setState(state => ({ ...state, movies: jsonResponse.Search}));
-                setState(state => ({ ...state, errorMessage: ''}));
-            } else {
-                setState(state => ({ ...state, loading: false }));
-                setState(state => ({ ...state, errorMessage: jsonResponse.Error}));
-            }
-        })
-        .catch((error) => {
-            setState(state => ({ ...state, loading: false }));
-            setState(state => ({ ...state, errorMessage: error.toString()}));
-        });
-    };
 
     const nominate = (movie) => {
         const newNomination = [...nominations, movie];
@@ -66,7 +39,7 @@ const Dashboard = () => {
                     </Grid.Column>
 
                     <Grid.Column width={12}> 
-                        <Searchbar search={search} loading={loading}/>
+                        <Searchbar/>
                         {nominations.length >= MAX_NOMINATIONS &&
                             <Message
                                 info

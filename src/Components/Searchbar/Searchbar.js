@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Input, Button, Icon } from 'semantic-ui-react'
+import { AppContext } from '../../Context/AppContext'
+import { searchMovies } from '../../Services/OmdbApis'
+
 import './Searchbar.css';
 
 const ENTER_KEYCODE = 13;
 
-const Searchbar = ({loading, search}) => {
+const Searchbar = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [state, setState] = useContext(AppContext);
+  const { movies, loading, nominations, errorMessage } = state;
   
   const handleSearchInputChanges = (e) => {
     setSearchValue(e.target.value);
@@ -21,8 +26,22 @@ const Searchbar = ({loading, search}) => {
     resetInputField();
   }
 
+  const search = async (searchValue) => {
+    setState(state => ({ ...state, loading: true }));
+    const jsonResponse =  await searchMovies(searchValue);
+    setState(state => ({ ...state, loading: false }));
+    if(jsonResponse instanceof Error){
+      setState(state => ({ ...state, errorMessage: jsonResponse.toString()}));
+    }
+    else if (jsonResponse.Response === "True") {
+        setState(state => ({ ...state, movies: jsonResponse.Search}));
+        setState(state => ({ ...state, errorMessage: ''}));
+    } else {
+        setState(state => ({ ...state, errorMessage: jsonResponse.Error}));
+    }
+  }
+
   const handleEnter = (e) => {
-    //constant 13 instead
     if (e.keyCode === ENTER_KEYCODE) {
       setSearchValue(e.target.value);
       callSearchFunction(e);
@@ -37,7 +56,7 @@ const Searchbar = ({loading, search}) => {
           size='huge' 
           type="text"
           loading={loading}
-          placeholder='Search Movies...'
+          placeholder='Search Movies to Nominate...'
           onKeyDown={handleEnter}
           icon='search'
         />
