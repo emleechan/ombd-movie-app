@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Icon } from 'semantic-ui-react'
+import { AppContext } from '../../Context/AppContext'
 import './Nomination.css';
 
-const Nomination = ({ movie,  deleteNomination }) => {
+const Nomination = ({ movie }) => {
+  const [state, setState] = useContext(AppContext);
+  const { nominations } = state;
 
-  const callDeleteFunction = (e) => {
+  const deleteNomination = (imdbID) => {
+      const newNomination = nominations.filter(movie => movie.imdbID !== imdbID);
+      setState(state => ({ ...state, nominations: newNomination}));
+      localStorage.setItem("localStorage", JSON.stringify(newNomination));
+  };
+
+  const callDeleteFunc = (e) => {
     e.preventDefault();
     deleteNomination(movie.imdbID);
   }
@@ -12,10 +21,10 @@ const Nomination = ({ movie,  deleteNomination }) => {
   return (
     <div className="nomination">
         <div>
-          <h4 id="fonts" className='nomination-title'>{movie.Title}</h4>
+          <h4 id="fonts" className='nomination-header'>{movie.Title}</h4>
           <div id="fonts" className='nomination-year'>({movie.Year})</div>
         </div>
-          <Icon link name='close' onClick={callDeleteFunction} color='grey'/>
+          <Icon link name='close' onClick={callDeleteFunc} color='grey'/>
     </div>
   );
 };

@@ -10,19 +10,7 @@ import '../../Components/Nomination/Nomination.css';
 
 const Dashboard = () => {
     const [state, setState] = useContext(AppContext);
-    const { movies, loading, nominations, errorMessage } = state;
-
-    const nominate = (movie) => {
-        const newNomination = [...nominations, movie];
-        setState(state => ({ ...state, nominations: newNomination}));
-        localStorage.setItem("localStorage", JSON.stringify(newNomination));
-    };
-
-    const deleteNomination = (imdbID) => {
-        const newNomination = nominations.filter(movie => movie.imdbID !== imdbID);
-        setState(state => ({ ...state, nominations: newNomination}));
-        localStorage.setItem("localStorage", JSON.stringify(newNomination));
-    };
+    const { movies, nominations, errorMessage } = state;
 
     return (
         <div className="App">
@@ -30,11 +18,14 @@ const Dashboard = () => {
                 <Grid.Row>
                     <Grid.Column className="nomination-container" id="fonts" width={4} height={10}>
                             {nominations.length <= 0 ? (
-                                <div className="nomination">No Movies Are Nominated</div>
+                                <div className="nomination-title">No Movies Are Nominated</div>
                             ) : (
-                                nominations.map((movie, index) => (
-                                    <Nomination key={`${index}-${movie.Title}`} movie={movie} deleteNomination={deleteNomination}/>
-                                ))
+                                <div>
+                                    <div className="nomination-title"><h4 id='fonts'>Nominees</h4></div>
+                                    {nominations.map((movie, index) => (
+                                        <Nomination key={`${index}-${movie.Title}`} movie={movie} />
+                                    ))}
+                                </div>
                             )}
                     </Grid.Column>
 
@@ -52,16 +43,14 @@ const Dashboard = () => {
                                 <div className="errorMessage"><h1 id='fonts'>{errorMessage}</h1></div>
                             ) : (
                                 movies.map((movie, index) => (
-                                    <Movie key={`${index}-${movie.Title}`} movie={movie} nominate={nominate} nominations={nominations} />
+                                    <Movie key={`${index}-${movie.Title}`} movie={movie} />
                                 ))
                             )}
                         </div>
                     </Grid.Column>
                 </Grid.Row>
-
             </Grid>
         </div>
     );
-    
 }
 export default Dashboard;

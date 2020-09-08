@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Segment, Button } from 'semantic-ui-react';
 import './Movie.css';
+import { AppContext } from '../../Context/AppContext'
 import {MAX_NOMINATIONS} from '../../Constants'
 
-const Movie = ({ movie, nominate, nominations }) => {
-  const nominateMovie = (e) => {
+
+const Movie = ({ movie }) => {
+  const [state, setState] = useContext(AppContext);
+  const { nominations } = state;
+
+  const nominateMovie = (movie) => {
+    const newNomination = [...nominations, movie];
+    setState(state => ({ ...state, nominations: newNomination}));
+    localStorage.setItem("localStorage", JSON.stringify(newNomination));
+  };
+
+  const callNominateFunc = (e) => {
     e.preventDefault();
-    nominate(movie);
+    nominateMovie(movie);
   }
 
-  //make 5 a constant as max movie length
   return (
     <Segment className="movie">
       <div>
@@ -22,7 +32,7 @@ const Movie = ({ movie, nominate, nominations }) => {
         <h2>{movie.Title}</h2>
         <p>({movie.Year})</p>
         {!nominations.find(nomination => nomination.imdbID === movie.imdbID) && nominations.length < MAX_NOMINATIONS ?
-            <Button onClick={nominateMovie} >Nominate</Button> :
+            <Button onClick={callNominateFunc} >Nominate</Button> :
             <Button disabled>Nominate</Button> 
         }
       </div>

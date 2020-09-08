@@ -12,15 +12,7 @@ const Searchbar = () => {
   const [state, setState] = useContext(AppContext);
   const { movies, loading, nominations, errorMessage } = state;
   
-  const handleSearchInputChanges = (e) => {
-    setSearchValue(e.target.value);
-  }
-
-  const resetInputField = () => {
-    setSearchValue("")
-  }
-
-  const callSearchFunction = (e) => {
+  const callSearchFunc = (e) => {
     e.preventDefault();
     search(searchValue);
     resetInputField();
@@ -28,23 +20,31 @@ const Searchbar = () => {
 
   const search = async (searchValue) => {
     setState(state => ({ ...state, loading: true }));
-    const jsonResponse =  await searchMovies(searchValue);
+    const moviesRes =  await searchMovies(searchValue);
     setState(state => ({ ...state, loading: false }));
-    if(jsonResponse instanceof Error){
-      setState(state => ({ ...state, errorMessage: jsonResponse.toString()}));
+    if(moviesRes instanceof Error){
+      setState(state => ({ ...state, errorMessage: moviesRes.toString()}));
     }
-    else if (jsonResponse.Response === "True") {
-        setState(state => ({ ...state, movies: jsonResponse.Search}));
+    else if (moviesRes.Response === "True") {
+        setState(state => ({ ...state, movies: moviesRes.Search}));
         setState(state => ({ ...state, errorMessage: ''}));
     } else {
-        setState(state => ({ ...state, errorMessage: jsonResponse.Error}));
+        setState(state => ({ ...state, errorMessage: moviesRes.Error}));
     }
+  }
+
+  const resetInputField = () => {
+    setSearchValue("");
+  }
+
+  const handleSearchInputChanges = (e) => {
+    setSearchValue(e.target.value);
   }
 
   const handleEnter = (e) => {
     if (e.keyCode === ENTER_KEYCODE) {
       setSearchValue(e.target.value);
-      callSearchFunction(e);
+      callSearchFunc(e);
     }
   };
 
