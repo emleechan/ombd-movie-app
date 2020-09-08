@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/ombd-movie-app/static/css/main.16adb2a4.chunk.css",
+    "main.js": "/ombd-movie-app/static/js/main.e2b9f977.chunk.js",
+    "main.js.map": "/ombd-movie-app/static/js/main.e2b9f977.chunk.js.map",
+    "runtime-main.js": "/ombd-movie-app/static/js/runtime-main.355756f3.js",
+    "runtime-main.js.map": "/ombd-movie-app/static/js/runtime-main.355756f3.js.map",
+    "static/css/2.48b2f9f6.chunk.css": "/ombd-movie-app/static/css/2.48b2f9f6.chunk.css",
+    "static/js/2.c8aedf54.chunk.js": "/ombd-movie-app/static/js/2.c8aedf54.chunk.js",
+    "static/js/2.c8aedf54.chunk.js.map": "/ombd-movie-app/static/js/2.c8aedf54.chunk.js.map",
+    "index.html": "/ombd-movie-app/index.html",
+    "precache-manifest.994aced21e7c04206ed671f81bbc1d50.js": "/ombd-movie-app/precache-manifest.994aced21e7c04206ed671f81bbc1d50.js",
+    "service-worker.js": "/ombd-movie-app/service-worker.js",
+    "static/css/2.48b2f9f6.chunk.css.map": "/ombd-movie-app/static/css/2.48b2f9f6.chunk.css.map",
+    "static/css/main.16adb2a4.chunk.css.map": "/ombd-movie-app/static/css/main.16adb2a4.chunk.css.map",
+    "static/js/2.c8aedf54.chunk.js.LICENSE.txt": "/ombd-movie-app/static/js/2.c8aedf54.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/ombd-movie-app/static/media/outline-icons.ef60a4f6.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.355756f3.js",
+    "static/css/2.48b2f9f6.chunk.css",
+    "static/js/2.c8aedf54.chunk.js",
+    "static/css/main.16adb2a4.chunk.css",
+    "static/js/main.e2b9f977.chunk.js"
+  ]
+}
