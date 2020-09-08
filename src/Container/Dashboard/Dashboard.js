@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import Movie from "../../Components/Movie/Movie";
 import Searchbar from "../../Components/Searchbar/Searchbar";
 import Nomination from "../../Components/Nomination/Nomination";
@@ -54,3 +55,11 @@ const Dashboard = () => {
     );
 }
 export default Dashboard;
+
+Nomination.propTypes = {
+     movie: PropTypes.object
+}
+
+Movie.propTypes = {
+    movie: PropTypes.object
+}
