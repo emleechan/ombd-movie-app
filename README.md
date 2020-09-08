@@ -22,11 +22,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h3 align="center">OMDB MOVIE NOMINATION WEB APPLICATION</h3>
-
+  <h3 align="center"><a href="https://emleechan.github.io/ombd-movie-app/">OMDB MOVIE NOMINATION WEB APPLICATION</a></h3>
   <p align="center">
     Shopify's Web Developer Intern Challenge - Winter 2021
-    <br />
     <br />
     <a href="https://emleechan.github.io/ombd-movie-app/">View Demo</a>
   </p>
