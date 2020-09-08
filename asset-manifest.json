@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/ombd-movie-app/static/css/main.16adb2a4.chunk.css",
-    "main.js": "/ombd-movie-app/static/js/main.a8173f51.chunk.js",
-    "main.js.map": "/ombd-movie-app/static/js/main.a8173f51.chunk.js.map",
+    "main.js": "/ombd-movie-app/static/js/main.7587a3eb.chunk.js",
+    "main.js.map": "/ombd-movie-app/static/js/main.7587a3eb.chunk.js.map",
     "runtime-main.js": "/ombd-movie-app/static/js/runtime-main.d072ca3d.js",
     "runtime-main.js.map": "/ombd-movie-app/static/js/runtime-main.d072ca3d.js.map",
     "static/css/2.48b2f9f6.chunk.css": "/ombd-movie-app/static/css/2.48b2f9f6.chunk.css",
-    "static/js/2.e5dde6b1.chunk.js": "/ombd-movie-app/static/js/2.e5dde6b1.chunk.js",
-    "static/js/2.e5dde6b1.chunk.js.map": "/ombd-movie-app/static/js/2.e5dde6b1.chunk.js.map",
+    "static/js/2.6e6365c4.chunk.js": "/ombd-movie-app/static/js/2.6e6365c4.chunk.js",
+    "static/js/2.6e6365c4.chunk.js.map": "/ombd-movie-app/static/js/2.6e6365c4.chunk.js.map",
     "index.html": "/ombd-movie-app/index.html",
-    "precache-manifest.12a8b7551a3fb33372834f3a638cae37.js": "/ombd-movie-app/precache-manifest.12a8b7551a3fb33372834f3a638cae37.js",
+    "precache-manifest.795f5718a80927c01d6b2b7774fcc678.js": "/ombd-movie-app/precache-manifest.795f5718a80927c01d6b2b7774fcc678.js",
     "service-worker.js": "/ombd-movie-app/service-worker.js",
     "static/css/2.48b2f9f6.chunk.css.map": "/ombd-movie-app/static/css/2.48b2f9f6.chunk.css.map",
     "static/css/main.16adb2a4.chunk.css.map": "/ombd-movie-app/static/css/main.16adb2a4.chunk.css.map",
-    "static/js/2.e5dde6b1.chunk.js.LICENSE.txt": "/ombd-movie-app/static/js/2.e5dde6b1.chunk.js.LICENSE.txt",
+    "static/js/2.6e6365c4.chunk.js.LICENSE.txt": "/ombd-movie-app/static/js/2.6e6365c4.chunk.js.LICENSE.txt",
     "static/media/semantic.min.css": "/ombd-movie-app/static/media/outline-icons.ef60a4f6.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.d072ca3d.js",
     "static/css/2.48b2f9f6.chunk.css",
-    "static/js/2.e5dde6b1.chunk.js",
+    "static/js/2.6e6365c4.chunk.js",
     "static/css/main.16adb2a4.chunk.css",
-    "static/js/main.a8173f51.chunk.js"
+    "static/js/main.7587a3eb.chunk.js"
   ]
 }
