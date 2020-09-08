@@ -22,10 +22,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
   <h3 align="center">OMDB MOVIE NOMINATION WEB APPLICATION</h3>
 
   <p align="center">
@@ -53,12 +49,18 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Movie Demo](public/moviedemo.gif)
+<!--[![Product Name Screen Shot][product-screenshot]](https://example.com)-->
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`
+Webage can search OMDB for movies, allowing to save films for nomination. Currently, 5 nominees can be selected and a banner will appear.
+It can:
 
+* Search OMDB and display the results (movies only)
+* Add a movie from the search results to our nomination list
+* View the list of films already nominated
+* Remove a nominee from the nomination list
+* Save nomination lists if the user leaves the page
+* Immediate Search Results
 
 ### Built With
 
@@ -87,21 +89,6 @@ npm install or yarn install
 ```sh
 npm run or yarn run
 ```
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Webage can search OMDB for movies, allowing to save films for nomination. Currently, 5 nominees can be selected and a banner will appear.
-It can:
-
-* Search OMDB and display the results (movies only)
-* Add a movie from the search results to our nomination list
-* View the list of films already nominated
-* Remove a nominee from the nomination list
-* Save nomination lists if the user leaves the page
-
-
 
 <!-- ROADMAP -->
 ## Roadmap
