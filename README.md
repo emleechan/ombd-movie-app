@@ -94,7 +94,7 @@ See the [open issues](https://github.com/emleechan/ombd-movie-app/projects/1) fo
 <!-- Contact -->
 ## Contact
 
-Hit me up here:[mailto](mailto:emc15@sfu.ca)
+Hit me up here: [emc15@sfu.ca](mailto:emc15@sfu.ca) :)
 
 
 
