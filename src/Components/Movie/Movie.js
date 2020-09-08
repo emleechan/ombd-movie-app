@@ -26,6 +26,7 @@ const Movie = ({ movie }) => {
         <img
             width="100"
             src={movie.Poster}
+            alt=""
         />
       </div>
       <div className='movie-body'> 

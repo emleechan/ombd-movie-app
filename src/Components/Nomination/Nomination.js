@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Button, Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 import { AppContext } from '../../Context/AppContext'
 import './Nomination.css';
 

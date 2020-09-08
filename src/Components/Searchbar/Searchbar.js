@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Input, Button, Icon } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react'
 import { AppContext } from '../../Context/AppContext'
 import { searchMovies } from '../../Services/OmdbApis'
 
@@ -10,7 +10,7 @@ const ENTER_KEYCODE = 13;
 const Searchbar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [state, setState] = useContext(AppContext);
-  const { movies, loading, nominations, errorMessage } = state;
+  const { loading } = state;
   
   const callSearchFunc = (e) => {
     e.preventDefault();

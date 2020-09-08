@@ -1,16 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Movie from "../../Components/Movie/Movie";
 import Searchbar from "../../Components/Searchbar/Searchbar";
 import Nomination from "../../Components/Nomination/Nomination";
-import { Grid, Segment, Message } from 'semantic-ui-react'
+import { Grid, Message } from 'semantic-ui-react'
 import {MAX_NOMINATIONS} from '../../Constants'
 import { AppContext } from '../../Context/AppContext'
 import './Dashboard.css';
 import '../../Components/Nomination/Nomination.css';
 
 const Dashboard = () => {
-    const [state, setState] = useContext(AppContext);
+    const [state] = useContext(AppContext);
     const { movies, nominations, errorMessage } = state;
 
     return (
@@ -57,9 +57,21 @@ const Dashboard = () => {
 export default Dashboard;
 
 Nomination.propTypes = {
-     movie: PropTypes.object
+     movie: PropTypes.exact({
+        Title: PropTypes.string,
+        Year: PropTypes.string,
+        Poster: PropTypes.string,
+        imdbID: PropTypes.string,
+        Type: PropTypes.string
+     })
 }
 
 Movie.propTypes = {
-    movie: PropTypes.object
+    movie: PropTypes.exact({
+        Title: PropTypes.string,
+        Year: PropTypes.string,
+        Poster: PropTypes.string,
+        imdbID: PropTypes.string,
+        Type: PropTypes.string
+     })
 }
