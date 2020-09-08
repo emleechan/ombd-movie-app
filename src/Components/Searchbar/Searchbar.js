@@ -1,22 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useCallback } from "react";
 import { Input } from 'semantic-ui-react'
 import { AppContext } from '../../Context/AppContext'
 import { searchMovies } from '../../Services/OmdbApis'
-
+import _ from 'lodash';
 import './Searchbar.css';
 
 const ENTER_KEYCODE = 13;
+const DEBOUNCE_MS = 300;
 
 const Searchbar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [state, setState] = useContext(AppContext);
   const { loading } = state;
-  
-  const callSearchFunc = (e) => {
-    e.preventDefault();
-    search(searchValue);
-    resetInputField();
-  }
 
   const search = async (searchValue) => {
     setState(state => ({ ...state, loading: true }));
@@ -33,18 +28,33 @@ const Searchbar = () => {
     }
   }
 
-  const resetInputField = () => {
-    setSearchValue("");
+  const callSearchFunc = (srchVal) => {
+    if(srchVal.length === 0){
+      resetInputField();
+    } else {
+      search(srchVal);
+    }
   }
 
+  const resetInputField = () => {
+    setSearchValue("");
+    setState(state => ({ ...state, errorMessage: ''}));
+    setState(state => ({ ...state, movies: []}));
+  }
+
+  const debouncedSearch = useCallback(_.debounce(nextValue => callSearchFunc(nextValue), DEBOUNCE_MS), []);
+
   const handleSearchInputChanges = (e) => {
-    setSearchValue(e.target.value);
+    e.persist();
+    const { value: nextValue } = e.target;
+    setSearchValue(nextValue);
+    debouncedSearch(nextValue);
   }
 
   const handleEnter = (e) => {
     if (e.keyCode === ENTER_KEYCODE) {
       setSearchValue(e.target.value);
-      callSearchFunc(e);
+      callSearchFunc(searchValue);
     }
   };
 
