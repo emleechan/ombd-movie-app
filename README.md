@@ -31,19 +31,6 @@
 </p>
 
 
-
-<!-- TABLE OF CONTENTS -->
-## Table of Contents
-
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -59,9 +46,20 @@ It can:
 * Remove a nominee from the nomination list
 * Save nomination lists if the user leaves the page
 * Immediate Search Results
+* Persistent nomininees
+
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contact](#contact)
 
 ### Built With
-
 * [create-react-app](https://github.com/facebook/create-react-app)
 * [Semantic UI](https://semantic-ui.com/)
 * [OMDB](http://www.omdbapi.com/)
@@ -92,6 +90,11 @@ npm run or yarn run
 ## Roadmap
 
 See the [open issues](https://github.com/emleechan/ombd-movie-app/projects/1) for a list of proposed features (and known issues).
+
+<!-- Contact -->
+## Contact
+
+Hit me up here:[mailto](mailto:emc15@sfu.ca)
 
 
 
