@@ -44,9 +44,8 @@ It can:
 * Add a movie from the search results to our nomination list
 * View the list of films already nominated
 * Remove a nominee from the nomination list
-* Save nomination lists if the user leaves the page
+* Persist nomination lists if the user leaves the page
 * Immediate Search Results
-* Persistent nomininees
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
